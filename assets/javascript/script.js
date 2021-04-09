@@ -60,7 +60,7 @@ function StartQuizFunction() {
     // restarts the Current Question and Timer
     TimerFunction(); 
     CurrentQuestion = 0;
-    QuestinnaireFunction(CurrentQuestion);
+    QuestionnaireFunction(CurrentQuestion);
        
 }
 
@@ -74,6 +74,7 @@ function TimerFunction(){
             clearInterval(timerInterval);
             // Calculate Score;
             CurrentScore = SecondsLeft*100
+            FinalScoreEl.innerHTML = CurrentScore;
             QuestionnaireDiv.style.display = "none";
             UserScoreDiv.style.display = "block";            
         }
@@ -83,13 +84,12 @@ function TimerFunction(){
 //Questionnaire Function
 function QuestionnaireFunction(index) {
     if (index < QandA.length) {
-        DisplayQuestionEl = QandA[index].question;
-        Answer1Button = QandA[index].MultipleChoice[0];
-        Answer2Button = QandA[index].MultipleChoice[1];
-        Answer3Button = QandA[index].MultipleChoice[2];
-        Answer4Button = QandA[index].MultipleChoice[3];
+        DisplayQuestionEl.innerHTML = QandA[index].question;
+        Answer1Button.innerHTML = QandA[index].MultipleChoice[0];
+        Answer2Button.innerHTML = QandA[index].MultipleChoice[1];
+        Answer3Button.innerHTML = QandA[index].MultipleChoice[2];
+        Answer4Button.innerHTML = QandA[index].MultipleChoice[3];
     }
-    CheckAnswer()
 }
 
 // Check Answer Function (triggered by Answer button)
@@ -112,11 +112,11 @@ function SubmitScore(event){
     event.preventDefault;  
     Scores.push({initials: InitialsEl.value, score: CurrentScore});
     // Sort Scores --> Currently not working need to review
-    Scores = Scores.sort()
+    // Scores = Scores.sort()
     // Display Scoreboard Screen
+
     QuestionnaireDiv.style.display = "none";
     UserScoreDiv.style.display = "block";
-    DisplayScores()
 }
 
 // Display Scores Function
@@ -127,12 +127,14 @@ function DisplayScores(event){
 // Clear Scores Function
 function ClearScores(event){
     event.preventDefault;
+    Scores=[];
 }
 
 // Go Back Button
 function GoBack(event){
     event.preventDefault;
-
+    UserScoreDiv.style.display = "none";
+    StartDiv.style.display = "block";    
 }
 
 /* -------------------------------------------------- */
@@ -142,7 +144,10 @@ function GoBack(event){
 StartButton.addEventListener("click", StartQuizFunction)
 
 //Answers
-
+Answer1Button.addEventListener("click", CheckAnswer)
+Answer2Button.addEventListener("click", CheckAnswer)
+Answer3Button.addEventListener("click", CheckAnswer)
+Answer4Button.addEventListener("click", CheckAnswer)
 
 //Submit Score
 SubmitButton.addEventListener("click", SubmitScore)
