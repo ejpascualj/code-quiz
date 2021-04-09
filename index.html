@@ -5,42 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
     <title>JS Quiz</title>
 </head>
 
 <body>  
     <header>
-        <h1>The Greatest Java Quiz of ALL TIME</h1>
+        <h1>The Greatest Java Quiz of All Time</h1>
+        <p>Time: </p>
+        <p id="timer">60</p>
+        </p>
     </header>
 
     <main>
-        <div class = "start">
-            <h2>TITLE</h2>
-            <button class="start-button"></button>
+        <div id = "start">
+            <h2>This is a Java Quiz, Good Luck!</h2>
+            <button id="start-button"></button>
         </div>
-        <div class="questionnaire">
-            <h2 class="display-question"></h2>
+        
+        <div id="questionnaire">
+            <h2 id="display-question"></h2>
             <ul>
-                <li class="answer-1"></li>
-                <li class="answer-2"></li>
-                <li class="answer-3"></li>
+                <button id="answer-1"></button>
+                <button id="answer-2"></button>
+                <button id="answer-3"></button>
+                <button id="answer-4"></button>
             </ul>
         </div>
-        <div class="user-score">
-            <h2 class="final-score"></h2>
-            <form class="initial-form">
-                <input type="text" name="initials">
-                <label for="initials"></label>                
-                <button class="submit"></button>
-            </form> 
+        
+        <div id="user-score">
+            <h2 id="final-score">Final Score: </h2>
+            <form>
+                <label for="initials">Initials: </label>
+                <input id="initials" type="text" name="initials">
+                <button id="submit">Submit</button>
+            </form>
         </div>
-        <div class="scoreboard">
-            <ol class="score-list"></ol>
-            <button class="go-back"></button>
-            <button class="clear"></button>
+        
+        <div id="scoreboard">
+            <h1>Scoreboard</h1>
+            <ol id="score-list"></ol>
+            <button id="go-back">Go Back</button>
+            <button id="clear">Clear Scores</button>
         </div>
-    </main>
+        </main>
     
-    <script src="./script.js"></script>
-</body>
+    <script src="./assets/javascript/script.js"></script>
+</body>   
 </html>
